@@ -12,7 +12,7 @@ class LinkedList:
         new_node.next = self.head
         self.head = new_node
     
-    def count(self):
+    def count_iterative(self):
         head = self.head
         temp = head
         counter = 0
@@ -20,6 +20,14 @@ class LinkedList:
             counter += 1
             temp = temp.next
         return counter
+    
+    def count(self,head):
+        if(head == None):
+            return 0
+        return 1 + self.count(head.next) 
+    
+    def count_recursive(self):
+        return self.count(self.head)
             
 if __name__ == "__main__":
     link = LinkedList()
@@ -28,6 +36,7 @@ if __name__ == "__main__":
     link.push_head(3)
     link.push_head(4)
     link.push_head(5)
-    print(link.count())
+    print(link.count_iterative())
+    print(link.count_recursive())
     
     
