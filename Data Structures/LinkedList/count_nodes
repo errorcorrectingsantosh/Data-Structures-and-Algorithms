@@ -13,8 +13,7 @@ class LinkedList:
         self.head = new_node
     
     def count_iterative(self):
-        head = self.head
-        temp = head
+        temp = self.head
         counter = 0
         while(temp != None):
             counter += 1
