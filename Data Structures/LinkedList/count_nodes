@@ -1,0 +1,33 @@
+class Node:
+    def __init__(self,val,next=None):
+        self.val = val
+        self.next = next
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+    
+    def push_head(self,new_val):
+        new_node = Node(new_val)
+        new_node.next = self.head
+        self.head = new_node
+    
+    def count(self):
+        head = self.head
+        temp = head
+        counter = 0
+        while(temp != None):
+            counter += 1
+            temp = temp.next
+        return counter
+            
+if __name__ == "__main__":
+    link = LinkedList()
+    link.push_head(1)
+    link.push_head(2)
+    link.push_head(3)
+    link.push_head(4)
+    link.push_head(5)
+    print(link.count())
+    
+    
