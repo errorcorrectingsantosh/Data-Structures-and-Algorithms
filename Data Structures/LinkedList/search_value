@@ -1,0 +1,43 @@
+class Node:
+    def __init__(self,val,next=None):
+        self.val = val
+        self.next = next
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+    
+    def push_head(self,new_val):
+        new_node = Node(new_val)
+        new_node.next = self.head
+        self.head = new_node
+    
+    def search_iterative(self,value):
+        temp = self.head
+        while(temp != None):
+            if(temp.val == value):
+                return True
+            temp = temp.next
+        return False
+        
+    def searcher(self,head,value):
+        if(head == None):
+            return False
+        elif(head.val == value):
+            return True
+        return self.searcher(head.next,value)
+        
+    def search_recursive(self,value):
+        return self.searcher(self.head,value)
+            
+if __name__ == "__main__":
+    link = LinkedList()
+    link.push_head(1)
+    link.push_head(2)
+    link.push_head(3)
+    link.push_head(4)
+    link.push_head(5)
+    print(link.search_iterative(3))
+    print(link.search_recursive(3))
+    
+    
