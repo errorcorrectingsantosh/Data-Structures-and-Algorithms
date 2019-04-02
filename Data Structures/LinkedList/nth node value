@@ -1,0 +1,47 @@
+class Node:
+    def __init__(self,val,next=None):
+        self.val = val
+        self.next = next
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+    
+    def push_head(self,new_val):
+        new_node = Node(new_val)
+        new_node.next = self.head
+        self.head = new_node
+    
+    def nth_iterative(self,n):
+        temp = self.head
+        while(temp != None and n>1):
+            n -= 1
+            temp = temp.next
+        if(n == 1 and temp != None):
+            return temp.val
+        elif(temp == None):
+            print("Given index greater than length of LinkedList")
+            return -1
+        
+    def nth_value(self,head,n):
+        if(n == 1 and head != None):
+            return head.val
+        elif(head == None):
+            print("Given index greater than length of LinkedList")
+            return -1
+        return self.nth_value(head.next,n-1)
+    
+    def nth_recursive(self,n):
+        return self.nth_value(self.head,n)
+        
+if __name__ == "__main__":
+    link = LinkedList()
+    link.push_head(1)
+    link.push_head(2)
+    link.push_head(3)
+    link.push_head(4)
+    link.push_head(5)
+    print(link.nth_iterative(3))
+    print(link.nth_recursive(3))
+    
+    
